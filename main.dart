@@ -13,8 +13,8 @@ void main() async {
   //Hive========================
   await Hive.initFlutter();
   await Hive.openBox(Tags.hiveBase);
-  //CookieManager===============
-  CookieManager.instance.initCookie();
+  // //CookieManager===============
+  // CookieManager.instance.initCookie();
   //============================
   MyOrientation.systemUiOverlayStyle();
   runApp(const Injector(router: MyApp()));

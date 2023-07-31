@@ -9,7 +9,7 @@ class CookieManager extends Interceptor {
   static CookieManager get instance => _instance;
   CookieManager._internal();
 
-  String? _cookie;
+  String? _cookie=Boxes.cookie;
 
   @override
   void onResponse(
@@ -40,8 +40,6 @@ class CookieManager extends Interceptor {
     print("request.header:=${options.headers}");
     super.onRequest(options, handler);
   }
-
-  void initCookie() => _cookie = Boxes.cookie;
 
   void _saveCookie(String newCookie) {
     if (_cookie != newCookie) {
