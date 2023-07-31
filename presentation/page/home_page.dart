@@ -29,8 +29,8 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _fillPosts() {
     return Future.wait([
-      paginationDo.fillPosts(),
       paginationDo.fillBadge(),
+      paginationDo.fillPosts(),
     ]);
   }
 
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
     final paginationP = PaginationP.of(context);
     return Scaffold(
       appBar: AppBar(
-          centerTitle: true, title: Text("Posts (${paginationP.badge})")),
+          centerTitle: true, title: Text("Posts (+${paginationP.badge})")),
       body: RefreshIndicator(
         onRefresh: _fillPosts,
         child: Builder(builder: (context) {

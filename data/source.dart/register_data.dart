@@ -1,4 +1,4 @@
-import 'package:pagination/config/services/dio_manager.dart';
+import '/config/services/dio_manager.dart';
 
 import '../http_vars/uris.dart';
 import '../models/basic/response_model.dart';
