@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-import '../source.dart/post_data.dart';
+import '../http_vars/uris.dart';
 
 class PostDetalModel {
   final int id;
@@ -42,7 +42,7 @@ class PostDetalModel {
 
   factory PostDetalModel.fromMap(Map<String, dynamic> map) {
     final List<String> imgs =
-        map['images'].map((e) => "https://${Uris.domain}/${e["url"]}").toList().cast<String>();
+        map['images'].map((e) => "https://${Urls.domain}/${e["url"]}").toList().cast<String>();
     return PostDetalModel(
       id: map['id']?.toInt() ?? 0,
       title: map['title'] ?? '',

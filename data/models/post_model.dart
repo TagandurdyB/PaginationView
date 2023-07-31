@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../source.dart/post_data.dart';
+import '../http_vars/uris.dart';
 
 class PostModel {
   final int id;
@@ -38,7 +38,7 @@ class PostModel {
       id: map['id']?.toInt() ?? 0,
       title: map['title'] ?? '',
       img: map['image'] != null
-          ? "https://${Uris.domain}/${map['image']}"
+          ? "https://${Urls.domain}/${map['image']}"
           : '',
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pagination/data/models/post_detal_model.dart';
-import 'package:pagination/data/source.dart/post_data.dart';
+import '../data/models/post_detal_model.dart';
+import '../data/source.dart/post_data.dart';
 import 'package:provider/provider.dart';
 
 import '../data/models/post_model.dart';
@@ -8,7 +8,6 @@ import '../data/models/post_model.dart';
 class PaginationP extends ChangeNotifier {
   final PostData reposotiry;
   PaginationP(this.reposotiry);
-
 
   final int limit = 10;
 
@@ -26,7 +25,7 @@ class PaginationP extends ChangeNotifier {
   }
 
   bool isPostLast = false;
-  Future fetchPost() async {
+  Future fetchPosts() async {
     try {
       final List<PostModel> objs =
           await reposotiry.getPosts(limit, posts!.length);
@@ -34,7 +33,6 @@ class PaginationP extends ChangeNotifier {
       print("fatchPost=$objs");
       posts!.addAll(objs);
       // likeList.addAll(List.generate(objs.length, (index) => false));
-      // fillSubs();
       notifyListeners();
     } catch (err) {
       throw ("Error PaginationP>fatchPost(): $err");
@@ -42,7 +40,7 @@ class PaginationP extends ChangeNotifier {
   }
 
   List<PostDetalModel>? postDetals;
-PostDetalModel? detal;
+  PostDetalModel? detal;
   Future<void> fillPostDetal(int id) async {
     try {
       detal = null;
@@ -55,6 +53,19 @@ PostDetalModel? detal;
     }
   }
 
+  int _badge = 0;
+  int get badge => _badge;
+  void get ereaseBadge => _badge = 0;
+
+  Future<void> fillBadge() async {
+    try {
+      _badge = await reposotiry.badgePost();
+      notifyListeners();
+      // return _badge;
+    } catch (err) {
+      throw ("Error DiscountDataP>fillBadge: $err");
+    }
+  }
   // Future<void> fillChowsen(int offset) async {
   //   try {
   //     chowsen = [];

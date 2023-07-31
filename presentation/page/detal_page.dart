@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pagination/data/models/post_detal_model.dart';
-import 'package:pagination/logic/pagination_provider.dart';
+import '../../data/models/post_detal_model.dart';
+import '../../logic/pagination_provider.dart';
 
 class DetalPage extends StatefulWidget {
   // final int id;
@@ -43,8 +43,6 @@ class _DetalPageState extends State<DetalPage> {
       appBar: AppBar(title: Text("Detal:$obj")),
       body: PageView.builder(
         onPageChanged: (index) {
-// obj=
-print("Index:=$index");
           if (index == widget.objs.length - 1) {
             if (widget.fetch != null) {
               widget.fetch!();
